@@ -1,0 +1,18 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+/mcp_env/
+
+*.log
+.DS_Store
+
+#Sub project
+/astro_server/
+
