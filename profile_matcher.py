@@ -11,14 +11,14 @@ import streamlit as st
 import os 
 
 # --- LLM ---
-llm = ChatOpenAI(
-    base_url="https://api.groq.com/openai/v1",
-    api_key=os.getenv("GROQ_API_KEY"),
-    model="llama-3.3-70b-versatile"
-)
+#llm = ChatOpenAI(
+#    base_url="https://api.groq.com/openai/v1",
+#    api_key=os.getenv("GROQ_API_KEY"),
+#    model="llama-3.3-70b-versatile"
+#)
 
 #llm = ChatOllama(model="llama3")
-VOCAREUM_BASE_URL  = "https://openai.vocareum.com/v1"          # custom proxy
+VOCAREUM_BASE_URL  = os.getenv("VOCAREUM_BASE_URL") #"https://openai.vocareum.com/v1"          # custom proxy
 OPENAI_API_KEY     = os.getenv("OPENAI_API_KEY") #"voc-1784561922175350473180169ac23371fb5b7.30042371"
 
 #llm_gpt4o = ChatOpenAI(
