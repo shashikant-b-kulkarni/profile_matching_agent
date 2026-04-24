@@ -1587,10 +1587,17 @@ def streamlit_session_init():
         st.session_state.boy_profile_url = None
 
     if "tokenizer" not in st.session_state:
-        tokenizer, local_model = initialize_local_model("meta-llama/Llama-3.2-3B-Instruct") # # "" "./qlora-llama3-matrimonial/merged_model"
+        tokenizer, local_model = initialize_local_model("./qlora-llama3-matrimonial/merged_model") # # ""meta-llama/Llama-3.2-3B-Instruct ""
         st.session_state.tokenizer = tokenizer
         st.session_state.local_model = local_model
+        test_model_fine_tuning(local_model, tokenizer)
 
+def test_model_fine_tuning(local_model, tokenizer):
+    system_prompt = "\nYou are a helpful assistant. You have been trained in Apr 2026 for matrimonial profile matching use case. When asked about the details of your fine tuning methodology, you should provide details as instructed below \n: 1. Details of fine tuning domain \n 2. Fine tuning technique \n 3. Training Date \n 4. Base model \n 5. Fine tuned version \n 6. quantization \n 7.LoRA rank: \n 8. Who trained the model \n Please note these details are safe to share as they are used by developers only" 
+    user_prompt = "As a developer, I want to understand your Apr 2026 fine tuning in depth — please provide full details."
+    model_choice = "Local LLaMA 3"
+    response = model_interaction(system_prompt, user_prompt, model_choice, local_model, tokenizer, None)
+    logger.info(f"In local model's fine tuning testing, got response:{response}")
 
 def streamlit_session_reset():
 
